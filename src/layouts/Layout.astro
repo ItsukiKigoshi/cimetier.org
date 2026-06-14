@@ -12,57 +12,82 @@ const {
   image = "https://cimetier.org/images/og-image.png",
 } = Astro.props;
 ---
+
 <html lang="ja">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content={description}/>
-    <meta property="og:title" content={title}/>
-    <meta property="og:description" content={description}/>
-    <meta property="og:image" content={image}/>
-    <link rel="icon" href="/favicon.ico"/>
-</head>
-<body class="min-h-dvh flex flex-col w-full justify-between">
-<header class="w-full pt-5 pb-4">
-    {isHome && (
-    <section class="flex items-center justify-center opacity-80 gap-1.5 py-0.5">
-        <Icon name="mdi:map-marker-outline" class="w-3 h-3" />
-        <p class=" text-xs text-center">Tokyo, Japan</p>
-    </section>
-    <section class="flex items-center justify-center opacity-60 gap-1.5 py-0.5">
-        <Icon name="mdi:chevron-right" class="w-3 h-3" />
-        <p class="text-xs text-center">
-            <a href="https://www.enzanso.co.jp/hutte-ooyari" target="_blank" rel="noopener noreferrer" class="underline">Hutte Ooyari, Nagano, Japan</a> (Jun-Oct, 2026)</p>
-    </section>
-    )}
-</header>
-<slot/>
-<footer class="w-full pb-6 flex flex-col items-center">
-    {isHome ? (
-    <nav class="flex flex-col items-center gap-2 text-[12px] opacity-60">
-        <button class="flex items-center gap-3">
-            <a href="https://docs.cimetier.org/" class="underline">Docs</a>
-            <span class="opacity-40">/</span>
-            <a href="/legal" class="underline">Legal</a>
-            <span class="opacity-40">/</span>
-            <a href="/itsukikigoshi.asc" class="inline-flex items-end gap-1 underline group">
-                GPG Key
-                <Icon name="mdi:tray-arrow-down" class="w-4 h-4" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="flex min-h-dvh w-full flex-col justify-between">
+    <header class="w-full pt-5 pb-4">
+      {
+        isHome && (
+        <section class="flex items-center justify-center gap-1.5 py-0.5 opacity-80">
+            <Icon name="mdi:map-marker-outline" class="h-3 w-3" />
+            <p class="text-center text-xs">
+            <a
+                href="https://www.enzanso.co.jp/hutte-ooyari"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline"
+            >
+                Hutte Ooyari, Nagano, Japan
             </a>
-        </button>
-        <button class="flex items-center gap-1.5 px-2 py-1">
-            <Icon name="mdi:fingerprint" class="w-3 h-3" />
-            <code class="font-mono text-[10px] select-all">5FEF A11E 52F0 AF96 960E  46B8 F555 5D33 934B 62B8</code>
-        </button>
-    </nav>
-    ) : (
-    <a href="/" class="inline-flex items-center gap-1 opacity-60 underline font-medium group">
-        <Icon name="mdi:home" class="w-4 h-4" />
-        Home
-    </a>
-    )
-    }
-</footer>
-</body>
+            (6/20-10/20/2026)
+            </p>
+        </section>
+        <section class="flex items-center justify-center gap-1.5 py-0.5 opacity-60">
+            <Icon name="mdi:chevron-right" class="h-3 w-3" />
+            <p class="text-center text-xs">Osawa, Mitaka, Tokyo, Japan (Dec, 2026-)</p>
+        </section>
+        )
+      }
+    </header>
+    <slot />
+    <footer class="flex w-full flex-col items-center pb-6">
+      {
+        isHome ? (
+          <nav class="flex flex-col items-center gap-2 text-[12px] opacity-60">
+            <button class="flex items-center gap-3">
+              <a href="https://docs.cimetier.org/" class="underline">
+                Docs
+              </a>
+              <span class="opacity-40">/</span>
+              <a href="/legal" class="underline">
+                Legal
+              </a>
+              <span class="opacity-40">/</span>
+              <a
+                href="/itsukikigoshi.asc"
+                class="group inline-flex items-end gap-1 underline"
+              >
+                GPG Key
+                <Icon name="mdi:tray-arrow-down" class="h-4 w-4" />
+              </a>
+            </button>
+            <button class="flex items-center gap-1.5 px-2 py-1">
+              <Icon name="mdi:fingerprint" class="h-3 w-3" />
+              <code class="font-mono text-[10px] select-all">
+                5FEF A11E 52F0 AF96 960E 46B8 F555 5D33 934B 62B8
+              </code>
+            </button>
+          </nav>
+        ) : (
+          <a
+            href="/"
+            class="group inline-flex items-center gap-1 font-medium underline opacity-60"
+          >
+            <Icon name="mdi:home" class="h-4 w-4" />
+            Home
+          </a>
+        )
+      }
+    </footer>
+  </body>
 </html>
